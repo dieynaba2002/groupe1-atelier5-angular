@@ -1,0 +1,103 @@
+<mat-toolbar color ="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Mes Contacts</span>
+    <span class="example-spacer" ></span>
+    <button mat-raised-button (click)="openAddEditContactForm()" >Ajouter Contact</button>
+  <div>
+        <button mat-raised-button (click)="logout()"  routerLink="/accueil">Deconnexion</button>
+
+  </div>
+  </mat-toolbar>
+  <div class="container mt-5">
+
+<!-- 
+    <a class="btn btn-sm btn-dark " [routerLink]="['/contact-add']"></a> -->
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th >ID</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Telephone</th>
+          <th>Photo</th>
+          <th>email</th>
+          <th>Ajouté le</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="contacts.length < 1">
+        <tr>
+  
+          <td colspan="7" class="text-center">Aucun contact ajouter</td>
+  
+        </tr>
+      </tbody>
+  
+      <tbody *ngIf="contacts.length ">
+        <tr *ngFor="let c of contacts">
+          <th scope="row">{{ c.id }}</th>
+          <td>{{ c.nom }}</td>
+          <td>{{ c.prenom }}</td>
+          <td>{{ c.telephone }}</td>
+          <td>{{ c.photo }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.createdAT }}</td>
+          <td>
+            <a class="btn btn-sm btn-outline-primary me-3" [routerLink]="['/contact-detail', c.id]">Voir detail</a>
+            <a class="btn btn-sm btn-outline-warning me-3"  (click)="openAddEditContactForm()"><mat-icon>edit</mat-icon></a>
+                       
+            <button mat-fab color="accent" aria-label="Example icon button with a delete icon"(click)="archiver(c.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
+  
+<!--   
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+    -->
+
+
+
+<!-- <div class="container mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Lorem</th>
+                <th scope="col">Ipsum</th>
+                <th scope="col">Dolor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Sit</td>
+                <td>Amet</td>
+                <td>Consectetur</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Adipisicing</td>
+                <td>Elit</td>
+                <td>Sint</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Hic</td>
+                <td>Fugiat</td>
+                <td>Temporibus</td>
+            </tr>
+        </tbody>
+    
+    </table>
+</div> -->
